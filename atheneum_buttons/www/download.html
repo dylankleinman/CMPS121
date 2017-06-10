@@ -21,7 +21,7 @@ limitations under the License.
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue_grey-amber.min.css" />
-    <link rel="stylesheet" href="public/main.css">
+    
 
     <!--link rel="stylesheet" href="/main.css">
 
@@ -83,7 +83,7 @@ limitations under the License.
         <nav class="mdl-navigation">
             <a class="mdl-navigation__link mdl-color-text--yellow-A700" href="upload.html">Upload</a>
             <a class="mdl-navigation__link mdl-color-text--yellow-A700" href="download.html">Browse Files</a>
-            <a class="mdl-navigation__link mdl-color-text--yellow-A700" href="index.html">My Account</a>
+            <a class="mdl-navigation__link mdl-color-text--yellow-A700" href="index.html">Home</a>
             <a class="mdl-navigation__link mdl-color-text--yellow-A700" href="http://www.weekinethereum.com/">News</a>
             <a class="mdl-navigation__link mdl-color-text--yellow-A700" href="https://www.coinbase.com/">Coinbase</a>
             <a class="mdl-navigation__link mdl-color-text--yellow-A700" href="">Sign Out</a>
@@ -189,36 +189,7 @@ limitations under the License.
     </main>
 </div>
 <script>
-    $(document).ready(function() {
-        var storage = firebase.storage();
-        var storageRef = storage.ref();
-        var fileToUpload
-        var uploadRef
-
-
-        function uploadToFirebase(file) {
-            uploadRef = storageRef.child("testUploads/"+file.name)
-
-            console.log(fileToUpload)
-
-            return uploadRef.put(file).then(function(snapshot) {
-                console.log("NEW DOWNLOAD URL: "+snapshot.downloadURL)
-                $("#linkbox").html(snapshot.downloadURL)
-            })
-        }
-
-
-        $("#submitButton").click(function() {
-            if($("#fileInput").val()) {
-                fileToUpload = document.querySelector("[name='fileInput']").files[0]
-                uploadToFirebase(fileToUpload)
-
-            }
-        })
-
-    })
-
-
+ 
     //var file_list = document.getElementById('file_list');
     var auth = firebase.auth();
     var database = firebase.database();
@@ -297,7 +268,6 @@ limitations under the License.
             pull_db("Art");
             console.log("Art pressed"); 
         });
-        pull_db();
   }
 
   function pull_db(tag) {
