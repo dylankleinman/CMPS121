@@ -61,6 +61,26 @@
                     <button id ="signup_redirect" data-remodal-action="confirm" class="remodal-signup">Sign Up</button>
                 </div>    
     
+ <!--------Modal Popup for Signup---------->
+                <div class="remodal" data-remodal-id="modal2">
+                    <button data-remodal-action="close" class="remodal-close"></button>
+                    
+                    
+                    <h1>Create Account</h1>
+                    <div id="signUpWrapper">
+                    <input type="text" id="signup_email" placeholder="email"/><br/>
+                    <br>
+                    <input type="password" id="signup_password" placeholder="password" /><br/>
+                    <br>
+                    <input type="text" id="wallet_addr" placeholder="Ethereum Wallet Address"/><br/>
+                    <br>
+                    <input type="password" id="wallet_pass" placeholder="Ethereum Wallet Password"/><br/>
+                    <div id="errorMessage"></div>
+                    </div>
+                    <br>
+                    <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
+                    <button id ="confirm_signup"data-remodal-action="confirm" class="remodal-confirm">Create</button>
+                </div>
         
     
 <div class = "container">
@@ -99,7 +119,7 @@
         <a class="mdl-navigation__link mdl-color-text--yellow-A700" href="index.html">Home</a>
         <a class="mdl-navigation__link mdl-color-text--yellow-A700" href="http://www.weekinethereum.com/">News</a>
         <a class="mdl-navigation__link mdl-color-text--yellow-A700" href="https://www.coinbase.com/">Coinbase</a>
-        <a class="mdl-navigation__link mdl-color-text--yellow-A700" href="">Sign Out</a>
+        <a id = "sign_out" class="mdl-navigation__link mdl-color-text--yellow-A700" href="">Sign Out</a>
     </nav>
   </div>
   <main class="mdl-layout__content">
