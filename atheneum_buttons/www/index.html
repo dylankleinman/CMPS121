@@ -55,10 +55,10 @@
                     <br>
                     <input type="password" id="login_password" placeholder="password" /><br>
                     <br>
-                    <p>Note: YOU MUST ALSO BE LOGGED IN TO METAMASK FOR TRANSACTIONS TO WORK <br> Don't have an account? Click Sign Up</p>
+                    <p> Don't have an account? Click More Info</p>
                     <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
                     <button id ="confirm_login"data-remodal-action="confirm" class="remodal-confirm">Login</button>
-                    <button id ="signup_redirect" data-remodal-action="confirm" class="remodal-signup">Sign Up</button>
+                    <button id ="signup_redirect" data-remodal-action="confirm" class="remodal-signup">More Info</button>
                 </div>    
     
  <!--------Modal Popup for Signup---------->
@@ -68,18 +68,11 @@
                     
                     <h1>Create Account</h1>
                     <div id="signUpWrapper">
-                    <input type="text" id="signup_email" placeholder="email"/><br/>
-                    <br>
-                    <input type="password" id="signup_password" placeholder="password" /><br/>
-                    <br>
-                    <input type="text" id="wallet_addr" placeholder="Ethereum Wallet Address"/><br/>
-                    <br>
-                    <input type="password" id="wallet_pass" placeholder="Ethereum Wallet Password"/><br/>
-                    <div id="errorMessage"></div>
+                    <p>To create your accout, please visit our site below on a computer, and follow the setup guide <br><a href="https://atheneum-app.herokuapp.com/">https://atheneum-app.herokuapp.com/</a>
+                    </p>
                     </div>
                     <br>
-                    <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
-                    <button id ="confirm_signup"data-remodal-action="confirm" class="remodal-confirm">Create</button>
+                    <button data-remodal-action="cancel" class="remodal-cancel">Close</button>
                 </div>
         
     
@@ -102,11 +95,11 @@
     </div>
     <!--Tiles located in the middle-->
     
-        <a href= "download.html" class="myButton myButton1">Literature</a>
-        <a href="http://google.com" class="myButton myButton2">History</a>
-        <a href="" class ="myButton myButton3">Chemistry</a>
-        <a href= "download.html" class="myButton myButton4">Music</a>
-        <a href="http://google.com" class="myButton myButton5">Art</a>
+        <a href="download.html#Literature" class="myButton myButton1">Literature</a>
+        <a href="download.html#History" class="myButton myButton2">History</a>
+        <a href="download.html#Chemistry" class ="myButton myButton3">Chemistry</a>
+        <a href="download.html#Music" class="myButton myButton4">Music</a>
+        <a href="download.html#Art" class="myButton myButton5">Art</a>
         
     
 
@@ -116,7 +109,6 @@
         <a id = "login_button" class="mdl-navigation__link mdl-color-text--yellow-A700">Login</a>
         <a class="mdl-navigation__link mdl-color-text--yellow-A700" href="upload.html">Upload</a>
         <a class="mdl-navigation__link mdl-color-text--yellow-A700" href="download.html">Browse Files</a>
-        <a class="mdl-navigation__link mdl-color-text--yellow-A700" href="index.html">Home</a>
         <a class="mdl-navigation__link mdl-color-text--yellow-A700" href="http://www.weekinethereum.com/">News</a>
         <a class="mdl-navigation__link mdl-color-text--yellow-A700" href="https://www.coinbase.com/">Coinbase</a>
         <a id = "sign_out" class="mdl-navigation__link mdl-color-text--yellow-A700" href="">Sign Out</a>
@@ -154,21 +146,6 @@
             $("#signup_button").click(function() {
                 var inst = $('[data-remodal-id=modal2]').remodal();
                 inst.open();
-            })
-            
-  
-            //Creates account if create is clicked on create account popup
-            $("#confirm_signup").click(function(){
-                var email = $('#signup_email').val();
-                var pass = $('#signup_password').val();
-                firebase.auth().createUserWithEmailAndPassword(email, pass).catch(function(error){
-                    var errorMessage = error.message;
-                    var errorCode = error.code;
-                    $("#errorMessage").html(errorMessage);
-                });
-                // If this account is not in the users DB table 
-                //(it never should be), add them.
-                check_account(email);
             })
     
             //If signup button is clicked on the login popup, redirect to sign up popup

@@ -60,25 +60,57 @@ limitations under the License.
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
     <header class="mdl-layout__header mdl-layout__header--scroll mdl-color-text--yellow-A700 mdl-color--blue-grey-800">
         <div class="mdl-layout__header-row">
+            <style type='text/css'>
+                .mdl-layout .mdl-layout__drawer-button {
+                    color: #FFD600;
+                }
+            </style>
             <!-- Title -->
             <span class="mdl-layout-title mdl-color-text--yellow-A700">Atheneum</span>
             <!-- Add spacer, to align navigation to the right -->
             <div class="mdl-layout-spacer"></div>
-            <!-- Navigation -->
-            <nav class="mdl-navigation">
-                <a class="mdl-navigation__link mdl-color-text--yellow-A700" href="http://www.weekinethereum.com/">News</a>
-                <a class="mdl-navigation__link mdl-color-text--yellow-A700" href="https://www.coinbase.com/">Coinbase</a>
-            </nav>
         </div>
     </header>
-    
+    <style type='text/css'>
+        .mdl-layout .mdl-layout__drawer-button {
+            color: #FFD600;
+        }
+        .file_input_div {
+            margin: auto;
+            width: 250px;
+            height: 40px;
+        }
+        .mdl-card {
+            overflow:auto;
+        }
+        .file_input {
+            float: left;
+        }
+        #file_input_text_div {
+            width: 200px;
+            margin-top: -8px;
+            margin-left: 5px;
+        }
+        #upload_subject {
+            height: 170px;
+        }
+        .none {
+            display: none;
+        }
+        #upload_mdl_card {
+            overflow: auto;
+            height: 525px;
+            margin-top: 2px;
+        }
+    </style>
+
     <!-- Drawer Content -->
     <div class="mdl-layout__drawer mdl-color-text--yellow-A700 mdl-color--blue-grey-800">
         <span class="mdl-layout-title mdl-color-text--yellow-A700">Atheneum</span>
         <nav class="mdl-navigation">
+            <a class="mdl-navigation__link mdl-color-text--yellow-A700" href="index.html">Home</a>
             <a class="mdl-navigation__link mdl-color-text--yellow-A700" href="upload.html">Upload</a>
             <a class="mdl-navigation__link mdl-color-text--yellow-A700" href="download.html">Browse Files</a>
-            <a class="mdl-navigation__link mdl-color-text--yellow-A700" href="index.html">Home</a>
             <a class="mdl-navigation__link mdl-color-text--yellow-A700" href="http://www.weekinethereum.com/">News</a>
             <a class="mdl-navigation__link mdl-color-text--yellow-A700" href="https://www.coinbase.com/">Coinbase</a>
             <a id = "sign_out" class="mdl-navigation__link mdl-color-text--yellow-A700" id="sign_out">Sign Out</a>
@@ -129,6 +161,9 @@ limitations under the License.
                                                     <li class="mdl-menu__item" id="Other" onClick="set_subject(6)">Other</li>
                                                 </ul>
                                         </div>
+                                        <div class="mdl-layout-spacer"></div>
+                                        <div class="mdl-layout-spacer"></div>
+                                        <div class="mdl-layout-spacer"></div>
                                         <!-- Title Textfield -->
                                         <div class="mdl-textfield mdl-js-textfield" id="upload_title">
                                             <input class="mdl-textfield__input" type="text" id="file_title" />
@@ -182,8 +217,6 @@ limitations under the License.
             window.location = "../#modal"
       }
     });
-
-
     //bind file select function to the upload button
     document.getElementById('file').addEventListener('change', handle_file_select, true);
     //document.getElementById('file').disabled = true;
@@ -196,12 +229,10 @@ limitations under the License.
         upload_file = evt.target.files[0];
         //debug
         console.log(upload_file);
-
         metadata = {
             'contentType': upload_file.type
         };
     }
-
     //db_upload is called when the "Send it" button is pressed
     //Actually pushes the file to the database and cloud storage
     function db_upload() {
@@ -296,8 +327,6 @@ limitations under the License.
             })
         })
     }
-
-
     $("#History").click(function(){
         subject = "History";
         console.log("WORK DAMMIT PLS: "+subject);
