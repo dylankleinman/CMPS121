@@ -87,7 +87,7 @@ limitations under the License.
     <!--------Modal for Download Rejection---------->
                 <div class="remodal" data-remodal-id="modal_dl2">
                     <button data-remodal-action="close" class="remodal-close"></button>
-                    <p>Sorry, but you don't own this file. Please purchase it on the web app.</p>
+                    <p>Sorry, but you don't own this file. Please purchase it on <a href="https://atheneum-app.herokuapp.com/">our website.</a></p>
                     <br>
                     <br>
                     <button data-remodal-action="cancel" class="remodal-cancel">Close</button>
@@ -265,11 +265,9 @@ limitations under the License.
     });
     
     
-    
-    
     //Display list of files uploaded
     window.onload = function() {
-        pull_db("All");
+        //pull_db("All");
         document.getElementById("All").addEventListener("click", function(){
             pull_db("All");
             console.log("All pressed"); 
@@ -294,7 +292,32 @@ limitations under the License.
             pull_db("Art");
             console.log("Art pressed"); 
         });
-  }
+        if(window.location.href.indexOf("#Literature") !== -1){
+            pull_db("Literature");
+            $('#scroll-tab-3').addClass('is-active');
+            $('#scroll-tab-1').removeClass('is-active');
+        }
+        if(window.location.href.indexOf("#History") !== -1){
+            pull_db("History");
+            $('#scroll-tab-2').addClass('is-active');
+            $('#scroll-tab-1').removeClass('is-active');
+        }
+        if(window.location.href.indexOf("#Chemistry") !== -1){
+            pull_db("Chemistry");
+            $('#scroll-tab-4').addClass('is-active');
+            $('#scroll-tab-1').removeClass('is-active');
+        }
+        if(window.location.href.indexOf("#Music") !== -1){
+            pull_db("Music");
+            $('#scroll-tab-5').addClass('is-active');
+            $('#scroll-tab-1').removeClass('is-active');
+        }
+        if(window.location.href.indexOf("#Art") !== -1){
+            pull_db("Art");
+            $('#scroll-tab-6').addClass('is-active');
+            $('#scroll-tab-1').removeClass('is-active');
+        }
+    }
       //Access the firebase DB and return all files that have the same category as the argument
     function pull_db(tag) {
         var file_list = document.getElementById('file_list_'+tag);
@@ -321,7 +344,10 @@ limitations under the License.
                     file_list.innerHTML = file_list.innerHTML + '<a id =\"'+child_key+'\" style=\"color:#FFD600\" onClick=\"displayModal(this.id)\">'+ child_data.title;
                     file_list.innerHTML = file_list.innerHTML + '<br>';
                 }
-            })
+            });
+            if(file_list.innerHTML.length == 0){
+                file_list.innerHTML = "It looks like nothing is here.";
+            }
         });
     }
     
