@@ -65,6 +65,8 @@ limitations under the License.
                 <div class="remodal" data-remodal-id="modal">
                     <button data-remodal-action="close" class="remodal-close"></button>
                     <h1>Confirm Download</h1>
+                    <p id = "balance"></p>
+                    <p>COST: 0.05 ETH</p>
                     <br>
                     <br>
                     <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
@@ -75,6 +77,10 @@ limitations under the License.
                 <div class="remodal" data-remodal-id="modal_dl">
                     <button data-remodal-action="close" class="remodal-close"></button>
                     <p id="download_link">Click here to download</p>
+                    <br>
+                    <p id = "receipt"></p>
+                    <br>
+                    <p id="redownload"></p>
                     <br>
                     <br>
                     <button data-remodal-action="cancel" class="remodal-cancel">Cancel</button>
@@ -94,6 +100,11 @@ limitations under the License.
 <!-- Simple header with scrollable tabs. -->
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
     <header class="mdl-layout__header mdl-color-text--yellow-A700 mdl-color--blue-grey-800">
+        <style type='text/css'>
+            .mdl-layout .mdl-layout__drawer-button {
+                color: #FFD600;
+            }
+        </style>
         <div class="mdl-layout__header-row">
             <!-- Title -->
             <span class="mdl-layout-title mdl-color-text--yellow-A700">Atheneum</span>
@@ -129,107 +140,54 @@ limitations under the License.
             <a id = "sign_out" class="mdl-navigation__link mdl-color-text--yellow-A700" >Sign Out</a>
         </nav>
     </div>
-    <main class="mdl-layout__content mdl-color--blue-grey-800">
+    <main class="mdl-layout__content mdl-color--grey-100">
         <!-- "All" tab -->
-        <section class="mdl-layout__tab-panel is-active mdl-color-text--grey-600 mdl-color--blue-grey-800" id="scroll-tab-1">
+        <section class="mdl-layout__tab-panel is-active mdl-color-text--blue-grey-900 mdl-color--grey-100" id="scroll-tab-1">
             <div class="page-content">
-                <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop mdl-color-text--grey-600 mdl-color--blue-grey-500">
-              <div class="mdl-card__title mdl-color--blue-grey-500 mdl-color-text--yellow-A700 ">
-                <h2 class="mdl-card__title-text">Available Files:</h2>
-              </div>
-              <div class="mdl-card__supporting-text mdl-color-text--grey-600 mdl-color--blue-grey-500" id="messagesDiv">
-                  
-                <div id="file_list_All" style="color:#FFD600">
-                  <p> </p>
-                    
+                <div id="file_list_All" class="mdl-grid mdl-cell--12-col">
+                    <p> </p>
                 </div>
-              </div>
-            </div> 
-               
             </div>
         </section>
         <!-- "History" tab -->
-        <section class="mdl-layout__tab-panel" id="scroll-tab-2">
+        <section class="mdl-layout__tab-panel is-active mdl-color-text--blue-grey-900 mdl-color--grey-100" id="scroll-tab-2">
             <div class="page-content">
-                 <div class="page-content">
-                <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop mdl-color-text--grey-600 mdl-color--blue-grey-500">
-              <div class="mdl-card__title mdl-color--blue-grey-500 mdl-color-text--yellow-A700 ">
-                <h2 class="mdl-card__title-text">Available Files:</h2>
-              </div>
-              <div class="mdl-card__supporting-text mdl-color-text--grey-600 mdl-color--blue-grey-500" id="messagesDiv">
-                <div id="file_list_History" style="color:#FFD600">
-                  <p> </p>
+                <div id="file_list_History" class="mdl-grid mdl-cell--12-col">
+                    <p> </p>
                 </div>
-              </div>
-            </div>       
-                     
-                     
-            </div>
             </div>
         </section>
         <!-- "Literature" tab -->
-        <section class="mdl-layout__tab-panel" id="scroll-tab-3">
-            <div class="page-content"><div class="page-content">
-                <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop mdl-color-text--grey-600 mdl-color--blue-grey-500">
-              <div class="mdl-card__title mdl-color--blue-grey-500 mdl-color-text--yellow-A700 ">
-                <h2 class="mdl-card__title-text">Available Files:</h2>
-              </div>
-              <div class="mdl-card__supporting-text mdl-color-text--grey-600 mdl-color--blue-grey-500" id="messagesDiv">
-                <div id="file_list_Literature" style="color:#FFD600">
-                  <p> </p>
+        <section class="mdl-layout__tab-panel is-active mdl-color-text--blue-grey-900 mdl-color--grey-100" id="scroll-tab-3">
+            <div class="page-content">
+                <div id="file_list_Literature" class="mdl-grid mdl-cell--12-col">
+                    <p> </p>
                 </div>
-              </div>
-            </div>                
-            </div></div>
+            </div>
         </section>
         <!-- "Chemistry" tab -->
-        <section class="mdl-layout__tab-panel" id="scroll-tab-4">
+        <section class="mdl-layout__tab-panel is-active mdl-color-text--blue-grey-900 mdl-color--grey-100" id="scroll-tab-4">
             <div class="page-content">
-                 <div class="page-content">
-                <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop mdl-color-text--grey-600 mdl-color--blue-grey-500">
-              <div class="mdl-card__title mdl-color--blue-grey-500 mdl-color-text--yellow-A700 ">
-                <h2 class="mdl-card__title-text">Available Files:</h2>
-              </div>
-              <div class="mdl-card__supporting-text mdl-color-text--grey-600 mdl-color--blue-grey-500" id="messagesDiv">
-                <div id="file_list_Chemistry" style="color:#FFD600">
-                  <p> </p>
+                <div id="file_list_Chemistry" class="mdl-grid mdl-cell--12-col">
+                    <p> </p>
                 </div>
-              </div>
-            </div>                
-            </div>
             </div>
         </section>
         <!-- "Music" tab -->
-        <section class="mdl-layout__tab-panel" id="scroll-tab-5">
+        <section class="mdl-layout__tab-panel is-active mdl-color-text--blue-grey-900 mdl-color--grey-100" id="scroll-tab-5">
             <div class="page-content">
-                <div class="page-content">
-                <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop mdl-color-text--grey-600 mdl-color--blue-grey-500">
-              <div class="mdl-card__title mdl-color--blue-grey-500 mdl-color-text--yellow-A700 ">
-                <h2 class="mdl-card__title-text">Available Files:</h2>
-              </div>
-              <div class="mdl-card__supporting-text mdl-color-text--grey-600 mdl-color--blue-grey-500" id="messagesDiv">
-                <div id="file_list_Music" style="color:#FFD600">
-                  <p> </p>
+                <div id="file_list_Music" class="mdl-grid mdl-cell--12-col">
+                    <p> </p>
                 </div>
-              </div>
-            </div>                
-            </div>
             </div>
         </section>
         <!-- "Art" tab -->
-        <section class="mdl-layout__tab-panel" id="scroll-tab-6">
-            <div class="page-content"><div class="page-content">
-                <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-cell--12-col-tablet mdl-cell--12-col-desktop mdl-color-text--grey-600 mdl-color--blue-grey-500">
-              <div class="mdl-card__title mdl-color--blue-grey-500 mdl-color-text--yellow-A700 ">
-                <h2 class="mdl-card__title-text">Available Files:</h2>
-              </div>
-              <div class="mdl-card__supporting-text mdl-color-text--grey-600 mdl-color--blue-grey-500" id="messagesDiv">
-                <div id="file_list_Art" style="color:#FFD600">
-                  <p> </p>
+        <section class="mdl-layout__tab-panel is-active mdl-color-text--blue-grey-900 mdl-color--grey-100" id="scroll-tab-6">
+            <div class="page-content">
+                <div id="file_list_Art" class="mdl-grid mdl-cell--12-col">
+                    <p> </p>
                 </div>
-              </div>
-            </div>                
-            </div></div>
+            </div>
         </section>
     </main>
 </div>
@@ -260,6 +218,19 @@ limitations under the License.
             window.location = "../#modal"
       }
     });
+    
+    
+     //Initialize web3 instance...if MetaMask is installed as a plugin, then metamask will automaticaly inject web3
+    //Otherwise set new web3 provider to the local host. Local host set to heroku app server. 
+    if (typeof web3 !== 'undefined') {
+        web3 = new Web3(web3.currentProvider);
+    } else {
+    // set the web3 provider to the node provided by Infura with the RPC connection below
+         web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/JZ2u24KnqTjj0qNuNXKk"));
+         console.log("Set web3 provider to localhost using Infura node")
+    }
+    
+   
     
     
     
@@ -409,6 +380,7 @@ limitations under the License.
               set_seller_address(snapshot.val().owner);
           })
           
+          
           provide_download();
          
 
@@ -519,9 +491,6 @@ limitations under the License.
     //that was just purchased
     function provide_download() {
         add_downloader(current_user, global_child).then(function() {
-            
-            
-        
             console.log("STATE OF OWNER: "+ owns_file)
             if(owns_file == true){
                 display_download();
@@ -533,6 +502,7 @@ limitations under the License.
                 // Get the download URL
                 file_ref.getDownloadURL().then(function(url) {
                     document.getElementById("download_link").innerHTML("<a href=\""+url+"\" download>Click here to download</a>")
+                    $("#redownload").text("Looks like you already own this file!");
                 }).catch(function(error) {
                     switch (error.code) {
                         case 'storage/object_not_found':
@@ -552,8 +522,50 @@ limitations under the License.
                 })
             }else{
                 console.log("Sorry you don't own this file")
-                var inst = $('[data-remodal-id=modal_dl2').remodal();
-                inst.open();
+                //Initiate transaction and store receipt if successful.
+                //Provide download URL and Link to receipt if purchase is 
+                //successful.
+                //Define cost of purchase as 0.05 Ether
+                //Throw error if transaction failed for any reason
+                web3.eth.sendTransaction({from: buyer_address, to: seller_address, value: web3.toWei(0.05, "ether") }, 
+                function(err,res){
+                    if(!err){
+                        // Transaction has finished successfuly,
+                        // allow user to download the file.
+                        console.log("Confirmation Receipt: " + res)
+                        transaction_receipt = res;
+                        $("#receipt").html("<a href = https://rinkeby.etherscan.io/tx/" + transaction_receipt + ">Transaction Receipt</a>")
+                        display_download();
+                        var dl_ref = firebase.database().ref("files/"+global_child);
+                        dl_ref.once("value").then(function(snapshot) {
+                            fname = snapshot.val().name;
+                            // Create a reference to the file we want to download
+                            var file_ref = storageRef.child('testUploads/'+fname);
+                            // Get the download URL
+                            file_ref.getDownloadURL().then(function(url) {
+                                document.getElementById("download_link").innerHTML("<a href=\""+url+"\" download>Click here to download</a>")
+                            }).catch(function(error) {
+                            switch (error.code) {
+                                case 'storage/object_not_found':
+                                // File doesn't exist
+                                break;
+                                case 'storage/unauthorized':
+                                // User doesn't have permission to access the object
+                                break;
+                                case 'storage/canceled':
+                                // User canceled the upload
+                                break;
+                                case 'storage/unknown':
+                                // Unknown error occurred, inspect the server response
+                                break;
+                            }
+                            });
+                        })    
+                        
+                    }else{
+                        console.log("Transaction Failed: " + err)
+                    }
+                });
             }
 
             //
@@ -595,7 +607,7 @@ limitations under the License.
                 //owns_file = 0;
                 //console.log("FALSE");
                 // 0 Represents that the user has not yet voted on the file
-                new_dl_list = snapshot.val().download_list;
+                new_dl_list = snapshot.val().download_list + email + ";" + '0' + ";";
                 console.log("YOU DO NOT OWN THIS FILE")
             } else { // Else, maintain the current list
                 owns_file = true;
@@ -614,6 +626,7 @@ limitations under the License.
             });
         });
     }
+    
     
     //Sign out functionality if signout is clicked
     $("#sign_out").click(function() {
@@ -646,8 +659,30 @@ limitations under the License.
                     // Match has been found
                     console.log("Match found!");
                     
+                    //Store user wallets and password
                     user_wallet = child_data.wallet_addr;
                     user_password = child_data.wallet_pass;
+                    
+                    
+                    //Use web3 to obtain wallet values. Get balance returns 
+                    //balance in the value of wei(denomination of Ether)
+                    var balance;
+                    web3.eth.getBalance(user_wallet, function(err,res){
+                        if(!err){
+                            
+                            console.log("CURRENT BALANCE: "+res);
+                            
+                            //Convert wei to Ether
+                            balance = web3.fromWei(res, 'ether');
+                            console.log("BALANCE IN ETHER: " + balance)
+                            $("#balance").text("CURRENT BALANCE: " + balance + " ETH");
+                            
+                        }else{
+                            console.log("ERROR BALANCE: "+ err);
+                        }
+                    })
+                   
+                   
                 }
             })
         })
